@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interpreter>
 	<phrase type="attack" description="damaging hit (including partial parry/block/evade)">
-		<pattern><![CDATA[/^(?:The )?(?P<source>.+) scored a (?P<result>.+) with (?:a )?(?P<action>.+) on (?:the )?(?P<target>.+) for (?P<points>[\d,]+) (?P<damage>.+)? damage to (?P<stat>.+)\./i]]></pattern>
+		<pattern><![CDATA[/^(?:The )?(?P<source>.+) scored a (?P<result>.+) with (?:a )?(?P<action>.+) on (?:the )?(?P<target>.+) for (?P<points>[\d,]+) (?P<damage>.+(?: )|)damage to (?P<stat>.+)\./i]]></pattern>
 	</phrase>
 	<phrase type="attack" description="non damaging hit including debuff and negative effect application such as DoT">
 		<pattern><![CDATA[/^(?:The )?(?P<source>.+) scored a (?P<result>.+) with (?:a )?(?P<action>.+) on (?:the )?(?P<target>(?:(?! for).)+)\./i]]></pattern>
@@ -22,14 +22,17 @@
 	<phrase type="incident" description="corruption removed">
 		<pattern><![CDATA[/^(?P<source>You) have (?P<result>dispelled) (?:a )?(?P<action>.+) from (?:the )?(?P<target>.+)\./i]]></pattern>
 	</phrase>
-	<phrase type="incident" description="corruption removal failed" source="You" result="dispelled">
+	<phrase type="incident" description="corruption removal nothing to remove" source="You" result="dispelled">
 		<pattern><![CDATA[/^Nothing to dispel./i]]></pattern>
+	</phrase>
+	<phrase type="incident" description="reflected damage" result="reflected">
+		<pattern><![CDATA[/^(?:The )?(?P<source>.+) reflected (?P<points>[\d,]+) (?P<damage>.+(?: )|)damage to the (?P<stat>.+) of (?:the )?(?P<target>.+)\./i]]></pattern>
 	</phrase>
 
 	<phrase type="heal" description="general heal">
 		<pattern><![CDATA[/^(?:The )?(?P<source>.+) applied a (?P<result>heal|critical heal) with (?:a )?(?P<action>.+) to (?:the )?(?P<target>.+) restoring (?P<points>[\d,]+) points to (?P<stat>.+)\./i]]></pattern>
 	</phrase>
-	<phrase type="heal" description="reflected heal" result="reflect">
+	<phrase type="heal" description="reflected heal" result="reflected">
 		<pattern><![CDATA[/^(?:The )?(?P<source>.+) reflected (?P<points>[\d,]+) points restored to the (?P<stat>.+) of (?:the )?(?P<target>.+)\./i]]></pattern>
 	</phrase>
 

@@ -8,6 +8,6 @@ CustomKey::generate();
 
 $x = new CombatParser();
 $x->loadInterpreter('../sample/interpreter.xml', true);
-$x->load('../sample/combat2.txt');
+$x->load('../sample/combatlog.txt');
 
 ?>
