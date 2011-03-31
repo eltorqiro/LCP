@@ -37,7 +37,7 @@ class CombatParser {
 					if(preg_match($phrases[$i]->pattern, $line, $matches)) {
 						$matchFound = true;
 						
-						echo 'type: ' . $phrases[$i]->attributes()->type . "<br />";
+						echo 'tags: ' . $phrases[$i]->attributes()->tags . "<br />";
 						echo 'source: ' . (isset($matches['source']) ? $matches['source'] : $phrases[$i]->attributes()->source) . "<br />";
 						echo 'target: ' . (isset($matches['target']) ? $matches['target'] : $phrases[$i]->attributes()->target) . "<br />";
 						echo 'action: ' . $matches['action'] . "<br />";
