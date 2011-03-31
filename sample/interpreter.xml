@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interpreter>
+	<phrase type="attack" description="damaging hit (including partial parry/block/evade)">
+		<pattern><![CDATA[/^(?:The )?(?P<source>.+) scored a (?P<result>.+) with (?:a )?(?P<action>.+) on (?:the )?(?P<target>.+) for (?P<points>[\d,]+) (?P<damage>.+)? damage to (?P<stat>.+)\./i]]></pattern>
+	</phrase>
+	<phrase type="attack" description="non damaging hit including debuff and negative effect application such as DoT">
+		<pattern><![CDATA[/^(?:The )?(?P<source>.+) scored a (?P<result>.+) with (?:a )?(?P<action>.+) on (?:the )?(?P<target>(?:(?! for).)+)\./i]]></pattern>
+	</phrase>
+	<phrase type="attack" description="skill avoided, resisted or immune to">
+		<pattern><![CDATA[/^(?:The )?(?P<source>.+) tried to use (?:a )?(?P<action>.+) on (?:the )?(?P<target>.+) but (?:it|he|she) (?:was )?(?P<result>blocked|parried|evaded|resisted|immune)(?: to)? the attempt\./i]]></pattern>
+	</phrase>
+	<phrase type="attack" description="skill missed">
+		<pattern><![CDATA[/^(?:The )?(?P<source>.+) (?P<result>missed) trying to use (?:a )?(?P<action>.+) on (?:the )?(?P<target>.+)\./i]]></pattern>
+	</phrase>
+
+	<phrase type="incident" description="action interrupted">
+		<pattern><![CDATA[/^(?:The )?(?P<target>.+) was (?P<result>interrupted) by (?:the )?(?P<source>.+)\!/i]]></pattern>
+	</phrase>
+	<phrase type="incident" description="cc broken" result="cc broken">
+		<pattern><![CDATA[/^(?:The )?(?P<source>You|(?:(?!Your attack).)+)(?:r attack)? (?:has|have) (?:broken|freed|released) (?:the )?(?P<target>.+) (?:of their|from a|from being) (?P<action>daze|fear|immobilized)(?: with an attack)?\!/i]]></pattern>
+	</phrase>
+	<phrase type="incident" description="corruption removed">
+		<pattern><![CDATA[/^(?P<source>You) have (?P<result>dispelled) (?:a )?(?P<action>.+) from (?:the )?(?P<target>.+)\./i]]></pattern>
+	</phrase>
+	<phrase type="incident" description="corruption removal failed" source="You" result="dispelled">
+		<pattern><![CDATA[/^Nothing to dispel./i]]></pattern>
+	</phrase>
+
+	<phrase type="heal" description="general heal">
+		<pattern><![CDATA[/^(?:The )?(?P<source>.+) applied a (?P<result>heal|critical heal) with (?:a )?(?P<action>.+) to (?:the )?(?P<target>.+) restoring (?P<points>[\d,]+) points to (?P<stat>.+)\./i]]></pattern>
+	</phrase>
+	<phrase type="heal" description="reflected heal" result="reflect">
+		<pattern><![CDATA[/^(?:The )?(?P<source>.+) reflected (?P<points>[\d,]+) points restored to the (?P<stat>.+) of (?:the )?(?P<target>.+)\./i]]></pattern>
+	</phrase>
+
+	<phrase type="support" description="generic applied a benefit catchall" result="positive effect">
+		<pattern><![CDATA[/^(?:The )?(?P<source>.+) applied a benefit with (?:a )?(?P<action>.+) on (?:the )?(?P<target>.+)\./i]]></pattern>
+	</phrase>
+	<phrase type="support" description="cure effect on others">
+		<pattern><![CDATA[/^(?P<source>You) have (?P<result>cured) (?:a )?(?P<action>.+) from (?:the )?(?P<target>.+)\./i]]></pattern>
+	</phrase>
+	<phrase type="support" description="cure effect on you" target="You">
+		<pattern><![CDATA[/^(?:a )?(?P<action>.+) has been (?P<result>cured)\./i]]></pattern>
+	</phrase>
+	<phrase type="support" description="nothing to cure" result="cured">
+		<pattern><![CDATA[/^Nothing to cure\./i]]></pattern>
+	</phrase>
+	<phrase type="support" description="revive">
+		<pattern><![CDATA[/^(?P<target>.+) (?:has|have) been (?P<result>revived)\./i]]></pattern>
+	</phrase>
+	
+	<phrase type="defeat" description="defeat" result="defeat">
+		<pattern><![CDATA[/^(?:The )?(?P<source>.+) (?:defeated|incapacitated) (?:the )?(?P<target>.+)\./i]]></pattern>
+	</phrase>
+	<phrase type="defeat" description="sourceless defeat of others" result="defeat">
+		<pattern><![CDATA[/^(?:The )?(?P<target>.+) (?:died|has been defeated)\./i]]></pattern>
+	</phrase>
+	
+	<phrase type="misc" description="pet release">
+		<pattern><![CDATA[/^(?P<source>You) (?P<result>release) (?P<target>your companion)\./i]]></pattern>	
+	</phrase>
+	<phrase type="misc" description="release from defeat" result="succumb">
+		<pattern><![CDATA[/^(?P<source>.+) (?:succumb|has succumbed) to (?:her|his|your) wounds\./i]]></pattern>	
+	</phrase>
+	
+	<phrase type="system" description="catchall for system messages like log start and stop">
+		<pattern><![CDATA[/^(?P<result>###.+)/i]]></pattern>	
+	</phrase>
+	
+</interpreter>
