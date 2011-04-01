@@ -3,53 +3,50 @@
 	<phrase tags="attack,damage" description="damaging hit (including partial parry/block/evade)">
 		<pattern><![CDATA[/^(?:The )?(?P<source>.+) scored a (?P<result>.+) with (?:a )?(?P<action>.+) on (?:the )?(?P<target>.+) for (?P<points>[\d,]+) (?P<damage>.+(?: )|)damage to (?P<stat>.+)\./i]]></pattern>
 	</phrase>
-	<phrase tags="attack" description="non damaging hit including debuff and negative effect application such as DoT">
+	<phrase tags="attack,effect" description="non damaging hit including debuff and negative effect application such as DoT">
 		<pattern><![CDATA[/^(?:The )?(?P<source>.+) scored a (?P<result>.+) with (?:a )?(?P<action>.+) on (?:the )?(?P<target>(?:(?! for).)+)\./i]]></pattern>
 	</phrase>
-	<phrase tags="attack" description="skill avoided, resisted or immune to">
+	<phrase tags="attack,defend" description="skill avoided, resisted or immune to">
 		<pattern><![CDATA[/^(?:The )?(?P<source>.+) tried to use (?:a )?(?P<action>.+) on (?:the )?(?P<target>.+) but (?:it|he|she) (?:was )?(?P<result>blocked|parried|evaded|resisted|immune)(?: to)? the attempt\./i]]></pattern>
 	</phrase>
-	<phrase tags="attack" description="skill missed">
+	<phrase tags="attack,miss" description="skill missed">
 		<pattern><![CDATA[/^(?:The )?(?P<source>.+) (?P<result>missed) trying to use (?:a )?(?P<action>.+) on (?:the )?(?P<target>.+)\./i]]></pattern>
 	</phrase>
 
-	<phrase tags="incident" description="action interrupted">
+	<phrase tags="incident,interrupt" description="action interrupted">
 		<pattern><![CDATA[/^(?:The )?(?P<target>.+) was (?P<result>interrupted) by (?:the )?(?P<source>.+)\!/i]]></pattern>
 	</phrase>
-	<phrase tags="incident" description="cc broken" result="cc broken">
+	<phrase tags="incident,cc break" description="cc broken" result="cc broken">
 		<pattern><![CDATA[/^(?:The )?(?P<source>You|(?:(?!Your attack).)+)(?:r attack)? (?:has|have) (?:broken|freed|released) (?:the )?(?P<target>.+) (?:of their|from a|from being) (?P<action>daze|fear|immobilized)(?: with an attack)?\!/i]]></pattern>
 	</phrase>
-	<phrase tags="incident" description="corruption removed">
+	<phrase tags="incident,dispel" description="corruption removed">
 		<pattern><![CDATA[/^(?P<source>You) have (?P<result>dispelled) (?:a )?(?P<action>.+) from (?:the )?(?P<target>.+)\./i]]></pattern>
 	</phrase>
-	<phrase tags="incident" description="corruption removal nothing to remove" source="You" result="dispelled">
+	<phrase tags="incident,dispel" description="corruption removal nothing to remove" source="You">
 		<pattern><![CDATA[/^Nothing to dispel./i]]></pattern>
 	</phrase>
-	<phrase tags="incident" description="reflected damage" result="reflected">
+	<phrase tags="incident,damage" description="reflected damage" result="reflected">
 		<pattern><![CDATA[/^(?:The )?(?P<source>.+) reflected (?P<points>[\d,]+) (?P<damage>.+(?: )|)damage to the (?P<stat>.+) of (?:the )?(?P<target>.+)\./i]]></pattern>
+	</phrase>
+	<phrase tags="incident,heal" description="reflected heal" result="reflected">
+		<pattern><![CDATA[/^(?:The )?(?P<source>.+) reflected (?P<points>[\d,]+) points restored to the (?P<stat>.+) of (?:the )?(?P<target>.+)\./i]]></pattern>
 	</phrase>
 
 	<phrase tags="heal" description="general heal">
 		<pattern><![CDATA[/^(?:The )?(?P<source>.+) applied a (?P<result>heal|critical heal) with (?:a )?(?P<action>.+) to (?:the )?(?P<target>.+) restoring (?P<points>[\d,]+) points to (?P<stat>.+)\./i]]></pattern>
 	</phrase>
-	<phrase tags="heal" description="reflected heal" result="reflected">
-		<pattern><![CDATA[/^(?:The )?(?P<source>.+) reflected (?P<points>[\d,]+) points restored to the (?P<stat>.+) of (?:the )?(?P<target>.+)\./i]]></pattern>
-	</phrase>
 
-	<phrase tags="support" description="generic applied a benefit catchall" result="positive effect">
+	<phrase tags="support,effect" description="generic applied a benefit catchall" result="positive effect">
 		<pattern><![CDATA[/^(?:The )?(?P<source>.+) applied a benefit with (?:a )?(?P<action>.+) on (?:the )?(?P<target>.+)\./i]]></pattern>
 	</phrase>
-	<phrase tags="support" description="cure effect on others">
+	<phrase tags="support,cure" description="cure effect on others">
 		<pattern><![CDATA[/^(?P<source>You) have (?P<result>cured) (?:a )?(?P<action>.+) from (?:the )?(?P<target>.+)\./i]]></pattern>
 	</phrase>
-	<phrase tags="support" description="cure effect on you" target="You">
+	<phrase tags="support,cure" description="cure effect on you" target="You">
 		<pattern><![CDATA[/^(?:a )?(?P<action>.+) has been (?P<result>cured)\./i]]></pattern>
 	</phrase>
-	<phrase tags="support" description="nothing to cure" result="cured">
+	<phrase tags="support,cure" description="nothing to cure">
 		<pattern><![CDATA[/^Nothing to cure\./i]]></pattern>
-	</phrase>
-	<phrase tags="support" description="revive">
-		<pattern><![CDATA[/^(?P<target>.+) (?:has|have) been (?P<result>revived)\./i]]></pattern>
 	</phrase>
 	
 	<phrase tags="defeat" description="defeat" result="defeat">
@@ -58,12 +55,15 @@
 	<phrase tags="defeat" description="sourceless defeat of others" result="defeat">
 		<pattern><![CDATA[/^(?:The )?(?P<target>.+) (?:died|has been defeated)\./i]]></pattern>
 	</phrase>
-	
-	<phrase tags="misc" description="pet release">
-		<pattern><![CDATA[/^(?P<source>You) (?P<result>release) (?P<target>your companion)\./i]]></pattern>	
+	<phrase tags="defeat,revive" description="revive">
+		<pattern><![CDATA[/^(?P<target>.+) (?:has|have) been (?P<result>revived)\./i]]></pattern>
 	</phrase>
-	<phrase tags="misc" description="release from defeat" result="succumb">
+	<phrase tags="defeat,succumb" description="release from defeat" result="succumb">
 		<pattern><![CDATA[/^(?P<source>.+) (?:succumb|has succumbed) to (?:her|his|your) wounds\./i]]></pattern>	
+	</phrase>
+	
+	<phrase tags="misc,pet" description="pet release">
+		<pattern><![CDATA[/^(?P<source>You) (?P<result>release) (?P<target>your companion)\./i]]></pattern>	
 	</phrase>
 	
 	<phrase tags="system" description="catchall for system messages like log start and stop">
