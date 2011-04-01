@@ -37,22 +37,22 @@ class CombatParser {
 					if(preg_match($phrases[$i]->pattern, $line, $matches)) {
 						$matchFound = true;
 						
-						echo 'tags: ' . $phrases[$i]->attributes()->tags . "<br />";
-						echo 'source: ' . (isset($matches['source']) ? $matches['source'] : $phrases[$i]->attributes()->source) . "<br />";
-						echo 'target: ' . (isset($matches['target']) ? $matches['target'] : $phrases[$i]->attributes()->target) . "<br />";
-						echo 'action: ' . $matches['action'] . "<br />";
-						echo 'result: ' . (isset($matches['result']) ? $matches['result'] : $phrases[$i]->attributes()->result) . "<br />";
-						echo 'damage: ' . $matches['damage'] . "<br />";
-						echo 'points: ' . preg_replace('/[\.,]/', '', $matches['points']) . "<br />";
-						echo 'stat: ' . $matches['stat'] . "<br />";
+						echo 'tags: ' . $phrases[$i]->attributes()->tags . "<br />\n";
+						echo 'source: ' . (isset($matches['source']) ? $matches['source'] : $phrases[$i]->attributes()->source) . "<br />\n";
+						echo 'target: ' . (isset($matches['target']) ? $matches['target'] : $phrases[$i]->attributes()->target) . "<br />\n";
+						echo 'action: ' . $matches['action'] . "<br />\n";
+						echo 'result: ' . (isset($matches['result']) ? $matches['result'] : $phrases[$i]->attributes()->result) . "<br />\n";
+						echo 'type: ' . $matches['type'] . "<br />\n";
+						echo 'points: ' . preg_replace('/[\.,]/', '', $matches['points']) . "<br />\n";
+						echo 'stat: ' . $matches['stat'] . "<br />\n";
 					}
 				}
 				
 				if(!$matchFound) {
-					echo "<br />WARNING: $line<br /><br />";
+					echo "<br />WARNING: $line<br /><br />\n";
 				}
 
-				echo '-----------------------------------------------' . "<br />";
+				echo '-----------------------------------------------' . "<br />\n";
 			}
 		
 			fclose($resource);
