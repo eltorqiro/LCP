@@ -1,6 +1,7 @@
 LOTRO Combat Parser
 ===================
-Notes Below
+Author ElTorqiro
+
 Eclipse project notes
 ---------------------
 Included is the .project, .settings and .buildpath for an Eclipse project.
