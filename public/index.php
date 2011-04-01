@@ -1,5 +1,6 @@
 <?php
 
+require_once('../conf/config.php');
 require_once('../application/alphaID.lib.php');
 
 $xml = $fileKey;
@@ -15,7 +16,7 @@ if($xml != ""){
 	$fdate = ''.str_replace($time,"",$fileKey);
 	$fdate = "20".substr($fdate, 0, 2)."-".substr($fdate, 2)."";
 
-	$txtfile = "/lotroLogs/".$fdate."/txt/".$xml.".txt";
+	$txtfile = "".$logDir."/".$fdate."/txt/".$xml.".txt";
 
 	echo "<h2 align='center'>Your File ID: ".$xml."</h2>";
 
