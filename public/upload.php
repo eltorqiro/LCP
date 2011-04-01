@@ -1,5 +1,6 @@
 <?php
 
+require_once('../conf/config.php');
 require_once('../application/alphaID.lib.php');
 
 list($usec, $sec) = explode(" ",microtime());
@@ -24,33 +25,33 @@ if($upload == "true") {
 
 		//File Location Check And Move
 
-    		if(file_exists("/lotroLogs")){
+    		if(file_exists($logDir)){
     			//Do Nothing
     		}else{
-        		mkdir('/lotroLogs', 0777, true);
-				chmod('/lotroLogs', 0777);
+        		mkdir($logDir, 0777, true);
+				chmod($logDir, 0777);
     		}
 
-    		if(file_exists("/lotroLogs/".date('Y-m')."/txt")){
+    		if(file_exists("".$logDir."/".date('Y-m')."/txt")){
 			  //Do Nothing
 			}
 
 			else{
-				mkdir("/lotroLogs/".date('Y-m')."", 0777, true);
-				chmod("/lotroLogs/".date('Y-m')."", 0777);
+				mkdir("".$logDir."/".date('Y-m')."", 0777, true);
+				chmod("".$logDir."/".date('Y-m')."", 0777);
 			}
 
-    		if(file_exists("/lotroLogs/".date('Y-m')."/txt")){
+    		if(file_exists("".$logDir."/".date('Y-m')."/txt")){
 
-				move_uploaded_file($_FILES["file"]["tmp_name"], "/lotroLogs/".date('Y-m')."/txt/".$fileKey.".txt");
+				move_uploaded_file($_FILES["file"]["tmp_name"], "".$logDir."/".date('Y-m')."/txt/".$fileKey.".txt");
 
 			}
 			else{
 
-				mkdir("/lotroLogs/".date('Y-m')."/txt", 0777, true);
-				chmod("/lotroLogs/".date('Y-m')."/txt", 0777);
+				mkdir("".$logDir."/".date('Y-m')."/txt", 0777, true);
+				chmod("".$logDir."/".date('Y-m')."/txt", 0777);
 
-				move_uploaded_file($_FILES["file"]["tmp_name"], "/lotroLogs/".date('Y-m')."/txt/".$fileKey.".txt");
+				move_uploaded_file($_FILES["file"]["tmp_name"], "".$logDir."/".date('Y-m')."/txt/".$fileKey.".txt");
 
     		}
 
