@@ -32,29 +32,34 @@ if($upload == "true") {
 				chmod($logDir, 0777);
     		}
 
-    		if(file_exists("".$logDir."/".date('Y-m')."/txt")){
+    		if(file_exists("".$logDir."/".date('Y')."")){
 			  //Do Nothing
 			}
 
 			else{
-				mkdir("".$logDir."/".date('Y-m')."", 0777, true);
-				chmod("".$logDir."/".date('Y-m')."", 0777);
+				mkdir("".$logDir."/".date('Y')."", 0777, true);
+				chmod("".$logDir."/".date('Y')."", 0777);
+			}
+    		
+			if(file_exists("".$logDir."/".date('Y')."/".date('m')."")){
+			  //Do Nothing
 			}
 
-    		if(file_exists("".$logDir."/".date('Y-m')."/txt")){
-
-				move_uploaded_file($_FILES["file"]["tmp_name"], "".$logDir."/".date('Y-m')."/txt/".$fileKey.".txt");
-
-			}
 			else{
+				mkdir("".$logDir."/".date('Y')."/".date('m')."", 0777, true);
+				chmod("".$logDir."/".date('Y')."/".date('m')."", 0777);
+			}
+			
+    		
+			if(file_exists("".$logDir."/".date('Y')."/".date('m')."")){
 
-				mkdir("".$logDir."/".date('Y-m')."/txt", 0777, true);
-				chmod("".$logDir."/".date('Y-m')."/txt", 0777);
+				mkdir("".$logDir."/".date('Y')."/".date('Y')."/".date('m')."/".$fileKey."", 0777, true);
+				chmod("".$logDir."/".date('Y')."/".date('Y')."/".date('m')."/".$fileKey."", 0777);
+				
+				move_uploaded_file($_FILES["file"]["tmp_name"], "".$logDir."/".date('Y')."/".date('m')."/".$fileKey."/original.txt");
 
-				move_uploaded_file($_FILES["file"]["tmp_name"], "".$logDir."/".date('Y-m')."/txt/".$fileKey.".txt");
-
-    		}
-
+			}
+			
 		//End File Location Check And Move
 
     }
