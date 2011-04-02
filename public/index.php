@@ -14,15 +14,15 @@ if($xml != ""){
 	$fileKey =  alphaID($xml, true);
 	$time = substr($fileKey, 4);
 	$fdate = ''.str_replace($time,"",$fileKey);
-	$fdate = "20".substr($fdate, 0, 2)."-".substr($fdate, 2)."";
+	$fdate = "20".substr($fdate, 0, 2)."/".substr($fdate, 2)."";
 
-	$txtfile = "".$logDir."/".$fdate."/txt/".$xml.".txt";
+	$txtfile = "".$logDir."/".$fdate."/".$xml."/original.txt";
 
 	echo "<h2 align='center'>Your File ID: ".$xml."</h2>";
 
-	require_once('CombatParser.class.php');
+	require_once('../application/CombatParser.class.php');
 	$x = new CombatParser();
-	$x->loadInterpreter('sample/interpreter.xml', true);
+	$x->loadInterpreter('../sample/interpreter.xml', true);
 	$x->load($txtfile);
 
 
