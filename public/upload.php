@@ -53,8 +53,8 @@ if($upload == "true") {
     		
 			if(file_exists("".$logDir."/".date('Y')."/".date('m')."")){
 
-				mkdir("".$logDir."/".date('Y')."/".date('Y')."/".date('m')."/".$fileKey."", 0777, true);
-				chmod("".$logDir."/".date('Y')."/".date('Y')."/".date('m')."/".$fileKey."", 0777);
+				mkdir("".$logDir."/".date('Y')."/".date('m')."/".$fileKey."", 0777, true);
+				chmod("".$logDir."/".date('Y')."/".date('m')."/".$fileKey."", 0777);
 				
 				move_uploaded_file($_FILES["file"]["tmp_name"], "".$logDir."/".date('Y')."/".date('m')."/".$fileKey."/original.txt");
 
