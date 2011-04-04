@@ -1,0 +1,84 @@
+damage				(count) (sum)
+	skills			(count) (sum)
+		skill a		(count) (sum)
+
+	incidents		(count) (sum)
+		type a		(count) (sum)
+
+	stat damage
+		morale		(count) (sum)
+		power		(count) (sum)
+
+	damage types	(count)
+		type a		(sum)
+
+attacks				(count)
+	damaging		(count) (sum)
+	
+	hits			(count)
+		hit			(count) (sum)
+		criticals	(count) (sum)
+		devastating	(count) (sum)
+		
+	failures		(count)
+		missed		(count)
+		blocked		(count)
+		parried		(count)
+		evaded		(count)
+		resisted	(count)
+		immune		(count)
+
+	effects applied	(count)
+		skill a		(count)
+
+heals				(count)
+	morale			(count) (sum)
+	power			(count)	(sum)
+
+	incidents		(count) (sum)
+		type a		(count) (sum)
+
+	skill a			(count)
+		morale		(count) (sum)
+		power		(count) (sum)
+
+	magnitude
+		heal		(count) (sum)
+		criticals	(count) (sum)
+
+incidents			(count)
+	reflected		(count)
+		damage		(count) (sum)
+		heal		(count) (sum)
+
+	interrupts		(count)
+
+	cc break		(count)
+		fear		(count)
+		daze		(count)
+		immobilized	(count)
+
+	dispel			(count)
+		nothing		(count)
+		type a		(count)
+
+support				(count)
+	effects applied	(count)
+		skill a		(count)
+
+	cure			(count)
+		nothing		(count)
+		type a		(count)
+
+defeat				(count)
+	defeated		(count)
+		target a	(count)
+
+	defeated by		(count)
+		actor a		(count)
+
+	revived			(count)
+	succumbed		(count)
+
+misc				(count)
+	pet released	(count)
