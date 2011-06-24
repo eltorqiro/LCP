@@ -1,5 +1,5 @@
 damage				(count) (sum)
-	skills			(count) (sum)
+	attacks			(count) (sum)
 		skill a		(count) (sum)
 
 	incidents		(count) (sum)
@@ -35,12 +35,12 @@ heals				(count)
 	morale			(count) (sum)
 	power			(count)	(sum)
 
-	incidents		(count) (sum)
-		type a		(count) (sum)
-
 	skill a			(count)
 		morale		(count) (sum)
 		power		(count) (sum)
+		
+	incidents		(count) (sum)
+		type a		(count) (sum)
 
 	magnitude
 		heal		(count) (sum)
